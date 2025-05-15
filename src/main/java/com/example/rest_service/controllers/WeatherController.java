@@ -19,7 +19,7 @@ public class WeatherController {
     private WeatherService weatherService;
 
     @GetMapping("/v1/weather")
-    public ResponseEntity<Map<String, Object>> weather(@RequestParam(value="city", defaultValue = "Melbourne") String city) {
+    public ResponseEntity<Map<String, Object>> weather(@RequestParam(value="city", defaultValue = "melbourne") String city) {
         Map<String, Object> result = weatherService.fetchWeather(city);
         return Objects.isNull(result)? new ResponseEntity<>(null, HttpStatus.BAD_REQUEST) : new ResponseEntity<>(result, HttpStatus.OK);
     }
